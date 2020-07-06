@@ -1,15 +1,24 @@
 <template>
   <div>
-    Hello Composition Api
+    <h2>{{ state.messageOne }}</h2>
+    <h2>{{ messageTwo }}</h2>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "@vue/composition-api"
+import { defineComponent, reactive, ref } from "@vue/composition-api"
 
 export default defineComponent({
   setup() {
-    // ここにリアクティブなデータ、関数を定義
+    const state = reactive<{ messageOne: string}>({
+      messageOne: "Hello"
+    })
+    const messageTwo = ref<string>("こんにちは")
+
+    return {
+      state,
+      messageTwo,
+    }
   }
 })
 </script>
