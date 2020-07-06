@@ -6,16 +6,19 @@
       @change-message="changeMessage"
     ></ChildComponent>
     <h2>{{ messageTwo }}</h2>
+    <TaskList></TaskList>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, reactive, ref } from "@vue/composition-api"
 import ChildComponent from "@/components/ChildComponent.vue"
+import TaskList from "@/components/TaskList.vue"
 
 export default defineComponent({
   components: {
-    ChildComponent
+    ChildComponent,
+    TaskList
   },
   setup() {
     const state = reactive({
