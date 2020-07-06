@@ -9,7 +9,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, SetupContext, reactive } from "@vue/composition-api"
+import { onMounted, onUpdated, onUnmounted, defineComponent, SetupContext, reactive } from "@vue/composition-api"
 
 type Props = {
   message: string;
@@ -22,6 +22,15 @@ export default defineComponent({
     }
   },
   setup(props: Props, context: SetupContext) {
+    onMounted(() => {
+      console.log('mounted!')
+    })
+    onUpdated(() => {
+      console.log("updated!")
+    })
+    onUnmounted(() => {
+      console.log("unmounted!")
+    })
     const state = reactive({
       props: props
       // message: props.message  // propsを値として受け取るとリアクティブじゃなくなる
