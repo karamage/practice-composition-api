@@ -43,17 +43,10 @@ export default defineComponent({
       taskName: '',
       searchText: '',
       tasks: tasks,
-      // TODO ↓computedのせいで型がanyになる
-      /*
-      */
       doingTasks: computed(() => state.searchedTasks.filter(t => !t.status)),
       completedTasks: computed(() => state.searchedTasks.filter(t => t.status)),
-      searchedTasks: computed(() => state.tasks.filter(t => t.name.include(state.searchText))),
+      searchedTasks: computed(() => state.tasks.filter(t => t.name.includes(state.searchText))),
     })
-
-    const state2 = reactive({
-    })
-
 
     function addTask() {
       console.log("addTask")
