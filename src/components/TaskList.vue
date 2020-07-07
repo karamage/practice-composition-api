@@ -29,7 +29,73 @@
 </template>
 
 <script lang="ts">
+import { computed, watch, ref, isRef } from "@vue/composition-api"
 
+const useTaskList = () => {
+  const tasksRef = ref([])
+
+  const toggleTask = (task, status) => {
+    const index = tasksRef.value.indexOf(task)
+    tasksRef.value.splice(index, 1, { ...task, status: status })
+  }
+
+  return {
+    tasksRef,
+    toggleTask,
+  }
+}
+
+const useAddingTask = (tasksRef) => {
+  const taskNameRef = ref('')
+
+  const addTask = () => {
+    tasksRef.value.push({
+      name: taskNameRef.value,
+      staus: false,
+    })
+    taskNameRef.value = ''
+  }
+
+  return {
+    taskNameRef,
+    addTask,
+  }
+}
+
+const useFilter = (tasks = []) => {
+  const tasksRef = isRef(tasks) ? tasks : ref(tasks)
+  const valid = Array.isArray(tasksRef.value)
+
+  const doingTasks = valid ?
+    computed(() => tasksRef.value.filter(t => !t.status)) :
+    () => { return [] }
+  const completedTasks = valid ?
+    computed(() => tasksRef.value.filter(t => t.status)) :
+    () => { return [] }
+  
+  return {
+    doingTasks,
+    completedTasks,
+  }
+}
+
+const useSearcher = (tasks = []) => {
+  const searchTextRef = ref('')
+  const tasksRef = ref(tasks)
+  const valid = Array.isArray(tasksRef.value)
+
+  const search = valid ?
+    computed(() => tasksRef.value.filter(t => t.name.includes(searchTextRef.value))) :
+    () => { return [] }
+  
+  return {
+    searchTextRef,
+    search,
+  }
+}
+
+/*
+// 切り出さないバージョン
 import { defineComponent, reactive, computed } from "@vue/composition-api"
 
 export default defineComponent({
@@ -69,6 +135,7 @@ export default defineComponent({
     }
   }
 })
+*/
 </script>
 
 <style scoped>
