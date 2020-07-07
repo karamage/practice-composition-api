@@ -7,6 +7,24 @@
     <div>
       <input type="text" v-model="state.searchText" />Search
     </div>
+    <div class="task-list-wrapper">
+      <ul>
+        <h4>DOING</h4>
+        <li v-for="(task, index) in state.doingTasks" :key="index">
+          <input type="checkbox" :checked="task.status" disabled/>
+          <label>{{ task.name }}</label>
+          <button @click="toggleTask(task, true)">toggle</button>
+        </li>
+      </ul>
+      <ul>
+        <h4>COMPLETED</h4>
+        <li v-for="(task, index) in state.completedTasks" :key="index">
+          <input type="checkbox" :checked="task.status" disabled/>
+          <label>{{ task.name }}</label>
+          <button @click="toggleTask(task, false)">toggle</button>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -26,12 +44,19 @@ export default defineComponent({
       searchText: '',
       tasks: tasks,
       // TODO ↓computedのせいで型がanyになる
-      doingTasks: computed(() => state.searchedTasks.filters(t => !t.status)),
-      completedTasks: computed(() => state.searchedTasks.filters(t => t.status)),
-      searchedTasks: computed(() => state.tasks.filters(t => t.name.include(state.searchText))),
+      /*
+      */
+      doingTasks: computed(() => state.searchedTasks.filter(t => !t.status)),
+      completedTasks: computed(() => state.searchedTasks.filter(t => t.status)),
+      searchedTasks: computed(() => state.tasks.filter(t => t.name.include(state.searchText))),
     })
 
+    const state2 = reactive({
+    })
+
+
     function addTask() {
+      console.log("addTask")
       state.tasks.push({
         name: state.taskName,
         status: false,
