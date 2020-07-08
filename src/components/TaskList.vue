@@ -29,7 +29,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, watch, ref, isRef } from "@vue/composition-api"
+import { defineComponent, computed, watch, ref } from "@vue/composition-api"
+import useFilter from '@/composables/use-filter'
 
 const useTaskList = () => {
   const tasksRef = ref([])
@@ -59,23 +60,6 @@ const useAddingTask = (tasksRef) => {
   return {
     taskNameRef,
     addTask,
-  }
-}
-
-const useFilter = (tasks = []) => {
-  const tasksRef = isRef(tasks) ? tasks : ref(tasks)
-  const valid = Array.isArray(tasksRef.value)
-
-  const doingTasks = valid ?
-    computed(() => tasksRef.value.filter(t => !t.status)) :
-    () => { return [] }
-  const completedTasks = valid ?
-    computed(() => tasksRef.value.filter(t => t.status)) :
-    () => { return [] }
-  
-  return {
-    doingTasks,
-    completedTasks,
   }
 }
 
