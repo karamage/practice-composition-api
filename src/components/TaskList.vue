@@ -1,16 +1,16 @@
 <template>
   <div>
     <div>
-      <input type="text" v-model="state.taskName" />
+      <input type="text" v-model="taskNameRef" />
       <button @click="addTask">Add</button>
     </div>
     <div>
-      <input type="text" v-model="state.searchText" />Search
+      <input type="text" v-model="searchTextRef" />Search
     </div>
     <div class="task-list-wrapper">
       <ul>
         <h4>DOING</h4>
-        <li v-for="(task, index) in state.doingTasks" :key="index">
+        <li v-for="(task, index) in doingTasks" :key="index">
           <input type="checkbox" :checked="task.status" disabled/>
           <label>{{ task.name }}</label>
           <button @click="toggleTask(task, true)">toggle</button>
@@ -18,7 +18,7 @@
       </ul>
       <ul>
         <h4>COMPLETED</h4>
-        <li v-for="(task, index) in state.completedTasks" :key="index">
+        <li v-for="(task, index) in completedTasks" :key="index">
           <input type="checkbox" :checked="task.status" disabled/>
           <label>{{ task.name }}</label>
           <button @click="toggleTask(task, false)">toggle</button>
@@ -29,7 +29,7 @@
 </template>
 
 <script lang="ts">
-import { computed, watch, ref, isRef } from "@vue/composition-api"
+import { defineComponent, computed, watch, ref, isRef } from "@vue/composition-api"
 
 const useTaskList = () => {
   const tasksRef = ref([])
@@ -93,6 +93,33 @@ const useSearcher = (tasks = []) => {
     search,
   }
 }
+
+export default defineComponent({
+  setup() {
+    const { tasksRef, toggleTask } = useTaskList()
+    const { taskNameRef, addTask } = useAddingTask(tasksRef)
+    const { searchTextRef, search } = useSearcher(tasksRef.value)
+    const { doingTasks, completedTasks } = useFilter(search)
+
+    watch([doingTasks, completedTasks], () => {
+      console.log("doingTasks: ", doingTasks.value)
+      console.log("completedTasks: ", completedTasks.value)
+    })
+
+    return {
+      // Mutable state
+      tasksRef,
+      taskNameRef,
+      searchTextRef,
+      // Functions
+      addTask,
+      toggleTask,
+      // Computed
+      doingTasks,
+      completedTasks,
+    }
+  }
+})
 
 /*
 // 切り出さないバージョン
