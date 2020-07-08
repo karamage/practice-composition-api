@@ -29,54 +29,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, watch, ref } from "@vue/composition-api"
+import { defineComponent, watch } from "@vue/composition-api"
 import useFilter from '@/composables/use-filter'
-
-const useTaskList = () => {
-  const tasksRef = ref([])
-
-  const toggleTask = (task, status) => {
-    const index = tasksRef.value.indexOf(task)
-    tasksRef.value.splice(index, 1, { ...task, status: status })
-  }
-
-  return {
-    tasksRef,
-    toggleTask,
-  }
-}
-
-const useAddingTask = (tasksRef) => {
-  const taskNameRef = ref('')
-
-  const addTask = () => {
-    tasksRef.value.push({
-      name: taskNameRef.value,
-      staus: false,
-    })
-    taskNameRef.value = ''
-  }
-
-  return {
-    taskNameRef,
-    addTask,
-  }
-}
-
-const useSearcher = (tasks = []) => {
-  const searchTextRef = ref('')
-  const tasksRef = ref(tasks)
-  const valid = Array.isArray(tasksRef.value)
-
-  const search = valid ?
-    computed(() => tasksRef.value.filter(t => t.name.includes(searchTextRef.value))) :
-    () => { return [] }
-  
-  return {
-    searchTextRef,
-    search,
-  }
-}
+import useTaskList from '@/composables/use-task-list'
+import useAddingTask from '@/composables/use-adding-task'
+import useSearcher from '@/composables/use-searcher'
 
 export default defineComponent({
   setup() {
