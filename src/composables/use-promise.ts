@@ -1,6 +1,6 @@
 import { reactive, toRefs } from "@vue/composition-api"
 
-export default function usePromise(fn:any) {
+export default function usePromise(fn:Function) {
   if (!fn) {
     throw new Error(
       `[usePromise]: 1st argument is required (must be a function)`
@@ -18,5 +18,25 @@ export default function usePromise(fn:any) {
     result: null,
   })
 
-  let lastPromise
+  let lastPromise:Promise<any>
+  const use = async (...args:any[]) => {
+    state.error = null
+    state.loading = true
+    const promise = (lastPromise = fn(...args))
+    try {
+      const result = await promise
+      if (lastPromise === promise) {
+        state.result = result
+      }
+    } catch (e) {
+      state.error = e
+    } finally {
+      state.loading = false
+    }
+  }
+
+  return {
+    ...toRefs(state),
+    use,
+  }
 }
