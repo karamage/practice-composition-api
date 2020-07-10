@@ -43,8 +43,8 @@ export default defineComponent({
     const { doingTasks, completedTasks } = useFilter(search)
 
     watch([doingTasks, completedTasks], () => {
-      console.log("doingTasks: ", doingTasks.value)
-      console.log("completedTasks: ", completedTasks.value)
+      //console.log("doingTasks: ", doingTasks.value)
+      //console.log("completedTasks: ", completedTasks.value)
     })
 
     return {
