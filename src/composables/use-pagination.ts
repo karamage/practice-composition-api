@@ -1,9 +1,9 @@
-import { computed, ref, toRefs, watch } from "@vue/composition-api"
+import { computed, ref, toRefs, watch, Ref} from "@vue/composition-api"
 
 export default function usePagination(options = {}) {
-  const { perPage = ref(10), total = ref(0), startPage = 1 } = toRefs(
+  const { perPage = ref(10), total = ref(0), startPage = ref(1) } = toRefs(
     options
-  )
+  ) as { perPage:Ref<number>, total:Ref<number>, startPage:number }
 
   // Internal currentPage value
   const _currentPage = ref(startPage)
