@@ -4940,6 +4940,11 @@ kind-of@^6.0.0, kind-of@^6.0.2:
   resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-6.0.3.tgz#07c05034a6c349fa06e24fa35aa76db4580ce4dd"
   integrity sha512-dcS1ul+9tmeD95T+x28/ehLgd9mENa3LsvDTtzm3vyBEO7RPptvAD+t44WVXaUjTBRcrpFeFlC8WCruUR456hw==
 
+ky@^0.5.1:
+  version "0.5.2"
+  resolved "https://registry.yarnpkg.com/ky/-/ky-0.5.2.tgz#744c74d7ff624cce1bd478817692df1ee8df5275"
+  integrity sha512-TVoPpFZ/maGy9XyEh8u1a7VYf1zdZxSRtkGHOSm2AmlRtCEmH9jE3vHaKyV/G/zCYhOA+DHN1c/b3b543mRFlw==
+
 launch-editor-middleware@^2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/launch-editor-middleware/-/launch-editor-middleware-2.2.1.tgz#e14b07e6c7154b0a4b86a0fd345784e45804c157"
@@ -8060,6 +8065,14 @@ vue-hot-reload-api@^2.3.0:
   resolved "https://registry.yarnpkg.com/vue-hot-reload-api/-/vue-hot-reload-api-2.3.4.tgz#532955cc1eb208a3d990b3a9f9a70574657e08f2"
   integrity sha512-BXq3jwIagosjgNVae6tkHzzIk6a8MHFtzAdwhnV5VlvPTFxDCvIttgSiHWjdGoTJvXtmRu5HacExfdarRcFhog==
 
+vue-ky-plugin@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/vue-ky-plugin/-/vue-ky-plugin-1.0.4.tgz#8c3f8bdc9c36cb3d2ef64395bf294003538ce6dd"
+  integrity sha512-E6mnpnwfzZWt8MmgXO5I76dLr/FPk1dNhlFePo7+d4zIuhZLCRo4q3EfpxHOVDHiS7hjzw7OgLs/QfRSH+iHUA==
+  dependencies:
+    ky "^0.5.1"
+    vue "^2.5.21"
+
 vue-loader@^15.9.2:
   version "15.9.3"
   resolved "https://registry.yarnpkg.com/vue-loader/-/vue-loader-15.9.3.tgz#0de35d9e555d3ed53969516cac5ce25531299dda"
@@ -8092,7 +8105,7 @@ vue-template-es2015-compiler@^1.9.0:
   resolved "https://registry.yarnpkg.com/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.9.1.tgz#1ee3bc9a16ecbf5118be334bb15f9c46f82f5825"
   integrity sha512-4gDntzrifFnCEvyoO8PqyJDmguXgVPxKiIxrBKjIowvL9l+N66196+72XVYR8BBf1Uv1Fgt3bGevJ+sEmxfZzw==
 
-vue@^2.6.11:
+vue@^2.5.21, vue@^2.6.11:
   version "2.6.11"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.11.tgz#76594d877d4b12234406e84e35275c6d514125c5"
   integrity sha512-VfPwgcGABbGAue9+sfrD4PuwFar7gPb1yl1UK1MwXoQPAw0BKSqWfoYCT/ThFrdEVWoI51dBuyCoiNU9bZDZxQ==
