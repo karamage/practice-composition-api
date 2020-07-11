@@ -6,9 +6,8 @@ export default function useSearcher (tasks = []) {
   const valid = Array.isArray(tasksRef.value)
 
   const search = valid ?
-    computed(() => tasksRef.value.filter(t => t.name.includes(searchTextRef.value))) :
+    computed(() => tasksRef.value.filter((t: any) => t.name.includes(searchTextRef.value))) :
     () => { return [] }
-  
   return {
     searchTextRef,
     search,

@@ -1,6 +1,6 @@
 import { ref } from "@vue/composition-api"
 
-export default function useAddingTask(tasksRef) {
+export default function useAddingTask(tasksRef: any) {
   const taskNameRef = ref('')
 
   const addTask = () => {

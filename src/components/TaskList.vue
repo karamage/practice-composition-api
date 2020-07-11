@@ -39,7 +39,7 @@ export default defineComponent({
   setup() {
     const { tasksRef, toggleTask } = useTaskList()
     const { taskNameRef, addTask } = useAddingTask(tasksRef)
-    const { searchTextRef, search } = useSearcher(tasksRef.value)
+    const { searchTextRef, search } = useSearcher(tasksRef.value as [])
     const { doingTasks, completedTasks } = useFilter(search)
 
     watch([doingTasks, completedTasks], () => {
