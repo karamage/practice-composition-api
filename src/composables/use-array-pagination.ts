@@ -1,7 +1,7 @@
 import usePagination from './use-pagination'
 import { computed, Ref } from "@vue/composition-api"
 
-export default function useArrayPagination(arrayRef:Ref<any[]>, paginationOptions = {}) {
+export default function useArrayPagination(arrayRef: Ref<any[]>, paginationOptions = {}) {
   const pagination = usePagination({
     ...paginationOptions,
     total: computed(() => arrayRef.value.length),

@@ -9,6 +9,10 @@ const ky = Ky.extend({
 const POSTS_URL = 'posts'
 const IMAGES_URL = 'photos'
 
+function wait(promise, n = 1500) {
+  return new Promise(res => setTimeout(() => res(promise), n))
+}
+
 function getPosts({ start = 0, limit = 5 } = {}) {
   return wait(
     ky(POSTS_URL, {
@@ -43,7 +47,3 @@ const images = {
   get: useEndpoint(ky, 'GET', IMAGES_URL),
 }
 export { posts, photos, images }
-
-function wait(promise, n = 1500) {
-  return new Promise(res => setTimeout(() => res(promise), n))
-}
