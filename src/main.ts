@@ -1,9 +1,9 @@
 import Vue from 'vue'
+import './composition-plugin'
 import App from './App.vue'
 import KyPlugin from 'vue-ky-plugin'
-import VueCompositionApi from "@vue/composition-api"
-
-Vue.use(VueCompositionApi)
+//import VueCompositionApi from "@vue/composition-api"
+//Vue.use(VueCompositionApi)
 Vue.use(KyPlugin)
 
 Vue.config.productionTip = false
