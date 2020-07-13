@@ -1,5 +1,5 @@
 import Ky from 'ky'
-import useEndpoint from '@/composables/use-endpoint'
+// import useEndpoint from '@/composables/use-endpoint'
 const BASE_URL = 'https://jsonplaceholder.typicode.com'
 
 const ky = Ky.extend({
@@ -9,7 +9,7 @@ const ky = Ky.extend({
 const POSTS_URL = 'posts'
 const IMAGES_URL = 'photos'
 
-function wait(promise, n = 1500) {
+function wait(promise: Promise<any>, n = 1500) {
   return new Promise(res => setTimeout(() => res(promise), n))
 }
 
@@ -39,6 +39,7 @@ function getPhotos({ start = 0, limit = 5 } = {}) {
   )
 }
 
+/*
 const photos = {
   get: getPhotos,
 }
@@ -46,4 +47,5 @@ const photos = {
 const images = {
   get: useEndpoint(ky, 'GET', IMAGES_URL),
 }
-export { posts, photos, images }
+*/
+export { posts, /* photos, images */ }

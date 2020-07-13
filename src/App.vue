@@ -3,7 +3,7 @@
     <Hello></Hello>
     <!-- img alt="Vue logo" src="./assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/ -->
-    <!-- Posts / -->
+    <Posts />
   </div>
 </template>
 
@@ -11,14 +11,14 @@
 import Vue from 'vue';
 //import HelloWorld from '@/components/HelloWorld.vue';
 import Hello from "@/components/Hello.vue"
-// import Posts from "@/components/Posts.vue"
+import Posts from "@/components/Posts.vue"
 
 export default Vue.extend({
   name: 'App',
   components: {
     //HelloWorld
     Hello,
-    //Posts,
+    Posts,
   }
 });
 </script>

@@ -25,9 +25,11 @@ import usePromiseFn from '@/composables/use-promise'
 import Post from '@/components/Post.vue'
 import Pagination from '@/components/Pagination.vue'
 
-//@ts-ignore
 import { posts } from '@/api/api'
+
 //import * as api from '@/api'
+
+//const api = require('./api/api')
 
 export default defineComponent({
   name: 'ShowPosts',
