@@ -4,7 +4,7 @@ function wait(promise: Promise<any>, n = 1500): Promise<any> {
   return new Promise(res => setTimeout(() => res(promise), n))
 }
 
-export default function useEndpoint(_ky: any, method: Function, path: string, _options: any[]) {
+export default function useEndpoint(_ky: any, method: string, path: string, _options: {} = {}) {
   const ky = _ky.extend(_options)
 
   let abortController: AbortController | null
@@ -26,7 +26,7 @@ export default function useEndpoint(_ky: any, method: Function, path: string, _o
     result: null,
   })
 
-  const call = async (options: any[]) => {
+  const call = async (options: {}) => {
     state.error = null
     abortController = new AbortController()
     state.promise = wait(
@@ -45,10 +45,10 @@ export default function useEndpoint(_ky: any, method: Function, path: string, _o
       _loading.value = false
     }
 
-    return {
-      call,
-      cancelPrevious,
-      ...toRefs(state),
-    }
+  }
+  return {
+    call,
+    cancelPrevious,
+    ...toRefs(state),
   }
 }

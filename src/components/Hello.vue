@@ -7,7 +7,7 @@
     ></ChildComponent>
     <h2>{{ messageTwo }}</h2>
     <TaskList></TaskList>
-    <Posts></Posts>
+    <!-- Posts></!-->
   </div>
 </template>
 
@@ -15,13 +15,13 @@
 import { defineComponent, reactive, ref } from "@vue/composition-api"
 import ChildComponent from "@/components/ChildComponent.vue"
 import TaskList from "@/components/TaskList.vue"
-import Posts from "@/components/Posts.vue"
+//import Posts from "@/components/Posts.vue"
 
 export default defineComponent({
   components: {
     ChildComponent,
     TaskList,
-    Posts,
+    //Posts,
   },
   setup() {
     const state = reactive({

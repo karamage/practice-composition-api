@@ -21,10 +21,13 @@
 import { defineComponent, ref } from "@vue/composition-api"
 import useArrayPagination from '@/composables/use-array-pagination'
 import usePromiseFn from '@/composables/use-promise'
-import * as api from '../api'
 
 import Post from '@/components/Post.vue'
 import Pagination from '@/components/Pagination.vue'
+
+//@ts-ignore
+import { posts } from '@/api/api'
+//import * as api from '@/api'
 
 export default defineComponent({
   name: 'ShowPosts',
@@ -37,11 +40,11 @@ export default defineComponent({
     const pagination = useArrayPagination(allPosts)
 
     const { loading, error, use: getAllPosts } = usePromiseFn(() => {
-      return api.posts
+      return posts
         .get({
           limit: 100,
         })
-        .then(result => {
+        .then((result: any) => {
           allPosts.value = result
         })
     })
