@@ -4,7 +4,7 @@
     <!-- img alt="Vue logo" src="./assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/ -->
     <!-- Posts / -->
-    <CounterApp />
+    <CounterApp2 />
   </div>
 </template>
 
@@ -13,7 +13,7 @@ import Vue from 'vue';
 //import HelloWorld from '@/components/HelloWorld.vue';
 //import Hello from "@/components/Hello.vue"
 //import Posts from "@/components/Posts.vue"
-import CounterApp from "@/components/CounterApp.vue"
+import CounterApp2 from "@/components/CounterApp2.vue"
 
 export default Vue.extend({
   name: 'App',
@@ -21,7 +21,7 @@ export default Vue.extend({
     //HelloWorld
     //Hello,
     //Posts,
-    CounterApp,
+    CounterApp2,
   }
 });
 </script>
