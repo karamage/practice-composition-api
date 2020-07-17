@@ -18,3 +18,5 @@ export default function useCounter() {
     decrement,
   }
 }
+
+export type CounterStore = ReturnType<typeof useCounter>
